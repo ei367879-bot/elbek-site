@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ product.name }}</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; background: #f4f7fb; color: #172033; }
+        .container { max-width: 900px; margin: 0 auto; padding: 24px; }
+        .card { background: white; padding: 24px; border-radius: 20px; box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+        .img { width: 100%; max-height: 360px; object-fit: cover; border-radius: 16px; margin-bottom: 16px; }
+        .price { font-size: 24px; color: #2563eb; font-weight: bold; }
+        a { color: #2563eb; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            {% if product.image %}
+                <img class="img" src="{{ product.image.url }}" alt="{{ product.name }}">
+            {% else %}
+                <img class="img" src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=1200&q=80" alt="{{ product.name }}">
+            {% endif %}
+            <h1>{{ product.name }}</h1>
+            <p><strong>Kategoriya:</strong> {{ product.category }}</p>
+            <p>{{ product.description }}</p>
+            <p class="price">${{ product.price }}</p>
+            <p><a href="{% url 'home' %}">← Bosh sahifaga qaytish</a></p>
+        </div>
+    </div>
+</body>
+</html>
